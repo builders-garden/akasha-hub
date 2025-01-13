@@ -1,3 +1,4 @@
+import { sql } from "drizzle-orm";
 import {
   boolean,
   foreignKey,
@@ -70,6 +71,28 @@ export const workstationTable = pgTable(
     ];
   }
 );
+
+export const userTable = pgTable("user", {
+  id: integer().primaryKey().generatedAlwaysAsIdentity({
+    name: "user_id",
+  }),
+  privyId: varchar({ length: 255 }).notNull(),
+  did: varchar({ length: 255 }), // akasha DID
+  name: varchar({ length: 255 }),
+  email: varchar({ length: 255 }),
+  imageSrc: text("image_src"),
+  bannerSrc: text("banner_src"),
+  links: text("links")
+    .array()
+    .$type<string[]>()
+    .default(sql`'{}'::text[]`),
+  createdAt: timestamp("created_at", {
+    withTimezone: true,
+  }).defaultNow(),
+  updatedAt: timestamp("updated_at", {
+    withTimezone: true,
+  }).defaultNow(),
+});
 
 export const eventTable = pgTable(
   "event",

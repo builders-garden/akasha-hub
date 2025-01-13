@@ -1,22 +1,19 @@
-import * as dotenv from "dotenv";
-import z from "zod";
+import { z } from "zod";
 
-dotenv.config();
+import { createEnv } from "@t3-oss/env-nextjs";
 
-const envSchema = z.object({
-  DATABASE_URL: z.string().url().trim().min(1),
+// https://create.t3.gg/en/usage/env-variables
+export const env = createEnv({
+  server: {
+    NODE_ENV: z.enum(["development", "test", "production"]),
+    DATABASE_URL: z.string().trim().min(1),
+  },
+  client: {
+    NEXT_PUBLIC_PRIVY_APP_ID: z.string(),
+  },
+  runtimeEnv: {
+    NODE_ENV: process.env.NODE_ENV,
+    DATABASE_URL: process.env.DATABASE_URL,
+    NEXT_PUBLIC_PRIVY_APP_ID: process.env.NEXT_PUBLIC_PRIVY_APP_ID,
+  },
 });
-
-const { data, success, error } = envSchema.safeParse(process.env);
-
-if (!success) {
-  console.error(
-    `An error has occurred while parsing environment variables:${error.errors.map(
-      (e) => ` ${e.path.join(".")} is ${e.message}`
-    )}`
-  );
-  process.exit(1);
-}
-
-export type EnvSchemaType = z.infer<typeof envSchema>;
-export const env = data;
