@@ -10,10 +10,13 @@ export const env = createEnv({
   },
   client: {
     NEXT_PUBLIC_PRIVY_APP_ID: z.string(),
+    NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID: z.string(),
   },
   runtimeEnv: {
     NODE_ENV: process.env.NODE_ENV,
     DATABASE_URL: process.env.DATABASE_URL,
     NEXT_PUBLIC_PRIVY_APP_ID: process.env.NEXT_PUBLIC_PRIVY_APP_ID,
+    NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID:
+      process.env.NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID,
   },
 });

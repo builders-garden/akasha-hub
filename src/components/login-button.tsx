@@ -1,38 +1,46 @@
 "use client";
 
-import { usePrivy } from "@privy-io/react-auth";
+import { useCallback } from "react";
+import { env } from "@/lib/env";
+
+import akashaSdk from "@/lib/akasha/akasha";
 
 function LoginButton() {
-  const { ready, authenticated, user, login, logout } = usePrivy();
-  // Disable login when Privy is not ready or the user is already authenticated
-  const disableLogin = !ready || (ready && authenticated);
+  const loginAkasha = useCallback(async () => {
+    try {
+      akashaSdk.services.common.web3.updateModalOptions({
+        projectId: env.NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID,
+        enableWallets: false,
+        enableWalletConnect: false,
+        features: {
+          socials: ["google", "farcaster", "github", "apple"],
+          email: true,
+          analytics: true,
+        },
+        debug: true,
+      });
+      try {
+        const authRes = await akashaSdk.api.auth.signIn({
+          checkRegistered: false,
+          resumeSignIn: false,
+        });
+        console.log("authRes", authRes);
+      } catch (e) {
+        console.error("Error logging in to Akasha", e);
+      }
+    } catch (error) {
+      console.error("Error modal options", error);
+    }
+  }, []);
 
   return (
     <>
-      {authenticated ? (
-        <div className="flex flex-row items-center gap-2">
-          <p>
-            Hi{" "}
-            <span className="text-sm bg-slate-400 text-black p-2 rounded-lg">
-              {user?.email?.address}
-            </span>
-          </p>
-          <button
-            onClick={logout}
-            className="bg-red-700 text-white rounded-lg px-2 py-1"
-          >
-            Logout
-          </button>
-        </div>
-      ) : (
-        <button
-          disabled={disableLogin}
-          onClick={login}
-          className="bg-blue-700 text-white rounded-lg px-2 py-1"
-        >
-          Privy Login
-        </button>
-      )}
+      <button
+        onClick={loginAkasha}
+        className="bg-blue-700 text-white rounded-lg px-2 py-1"
+      >
+        Akasha Login
+      </button>
     </>
   );
 }

@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
@@ -14,14 +14,24 @@
     "db:studio": "drizzle-kit studio"
   },
   "dependencies": {
+    "@akashaorg/composedb-models": "^0.1.8",
+    "@akashaorg/core-sdk": "0.1.15-alpha",
+    "@akashaorg/typings": "^0.1.9",
     "@privy-io/react-auth": "latest",
+    "@reown/appkit": "^1.6.4",
+    "@reown/appkit-adapter-wagmi": "^1.6.4",
+    "@reown/appkit-wallet-button": "^1.6.4",
     "@t3-oss/env-nextjs": "^0.11.1",
+    "@tanstack/react-query": "^5.64.2",
+    "@walletconnect/ethereum-provider": "^2.17.4",
     "dotenv": "^16.4.7",
     "drizzle-orm": "^0.38.3",
     "next": "15.1.4",
     "postgres": "^3.4.5",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "viem": "^2.22.10",
+    "wagmi": "^2.14.8",
     "zod": "^3.24.1"
   },
   "devDependencies": {
