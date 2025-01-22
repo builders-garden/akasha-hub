@@ -9,6 +9,7 @@ function LoginButton() {
   const loginAkasha = useCallback(async () => {
     try {
       akashaSdk.services.common.web3.setModalInstance(modal);
+      akashaSdk.services.common.web3.setConnectionFeatures(["email", "social"]);
 
       try {
         const authRes = await akashaSdk.api.auth.signIn({
