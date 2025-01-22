@@ -18,7 +18,14 @@ function LoginButton() {
           analytics: true,
         },
         debug: true,
+        metadata: {
+          name: "Akasha Hub",
+          description: "Login to Akasha Hub",
+          url: env.NEXT_PUBLIC_BASE_URL,
+          icons: [],
+        },
       });
+
       try {
         const authRes = await akashaSdk.api.auth.signIn({
           checkRegistered: false,
@@ -37,9 +44,9 @@ function LoginButton() {
     <>
       <button
         onClick={loginAkasha}
-        className="bg-blue-700 text-white rounded-lg px-2 py-1"
+        className="bg-primary text-white rounded-full px-4 py-2"
       >
-        Akasha Login
+        Login
       </button>
     </>
   );
