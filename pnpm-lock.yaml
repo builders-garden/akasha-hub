@@ -12,8 +12,8 @@ importers:
         specifier: ^0.1.8
         version: 0.1.8(@polkadot/util@7.9.2)(@types/react@19.0.7)(bufferutil@4.0.9)(encoding@0.1.13)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.3)(utf-8-validate@5.0.10)(zod@3.24.1)
       '@akashaorg/core-sdk':
-        specifier: 0.1.15-alpha
-        version: 0.1.15-alpha(@ethersproject/sha2@5.7.0)(@polkadot/util@7.9.2)(@types/react@19.0.7)(bufferutil@4.0.9)(encoding@0.1.13)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.3)(utf-8-validate@5.0.10)
+        specifier: 0.1.16-alpha
+        version: 0.1.16-alpha(@ethersproject/sha2@5.7.0)(@polkadot/util@7.9.2)(@types/react@19.0.7)(bufferutil@4.0.9)(encoding@0.1.13)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.3)(utf-8-validate@5.0.10)
       '@akashaorg/typings':
         specifier: ^0.1.9
         version: 0.1.9(@types/react@19.0.7)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -136,8 +136,8 @@ packages:
   '@akashaorg/composedb-models@0.1.8':
     resolution: {integrity: sha512-AjHd8SsJQ9lTvhdP1+VjtDMbNCY14EM2EVrofmTIpXDHq4FWwYBAvisL9yGUkmZucnnDkHxjPBC/25Ss2BBblA==}
 
-  '@akashaorg/core-sdk@0.1.15-alpha':
-    resolution: {integrity: sha512-dVZc+UWVWtei0paByUbfY7CTJotU1cEnFvj6xlmEwZ73f7anM2HcTtfk38ybHLcEJc694HIUUMJ61umbwKMXWA==}
+  '@akashaorg/core-sdk@0.1.16-alpha':
+    resolution: {integrity: sha512-+BURnZUSbqoLJS0rm7FE4nuLjfB/I4xVteRyP37xLzkptwWXg+c7sc8O3phTeoFehVlTVoXKTrX4AzaHEsG3sA==}
 
   '@akashaorg/typings@0.1.9':
     resolution: {integrity: sha512-Osvf//92MtqKtqV1yeq9+qWbyRwVSmkcYEv9eI3Ir3rV/ZoN+PsEucYuRPXEQmTaC2DfXLwfAW8m9sHQuTV/3A==}
@@ -6810,7 +6810,7 @@ snapshots:
       - utf-8-validate
       - zod
 
-  '@akashaorg/core-sdk@0.1.15-alpha(@ethersproject/sha2@5.7.0)(@polkadot/util@7.9.2)(@types/react@19.0.7)(bufferutil@4.0.9)(encoding@0.1.13)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.3)(utf-8-validate@5.0.10)':
+  '@akashaorg/core-sdk@0.1.16-alpha(@ethersproject/sha2@5.7.0)(@polkadot/util@7.9.2)(@types/react@19.0.7)(bufferutil@4.0.9)(encoding@0.1.13)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.3)(utf-8-validate@5.0.10)':
     dependencies:
       '@apollo/client': 3.11.8(@types/react@19.0.7)(graphql@16.8.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       '@ceramicnetwork/http-client': 6.4.0(bufferutil@4.0.9)(encoding@0.1.13)(typescript@5.7.3)(utf-8-validate@5.0.10)(zod@3.24.1)

@@ -1,30 +1,14 @@
 "use client";
 
 import { useCallback } from "react";
-import { env } from "@/lib/env";
 
 import akashaSdk from "@/lib/akasha/akasha";
+import { modal } from "./providers";
 
 function LoginButton() {
   const loginAkasha = useCallback(async () => {
     try {
-      akashaSdk.services.common.web3.updateModalOptions({
-        projectId: env.NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID,
-        enableWallets: false,
-        enableWalletConnect: false,
-        features: {
-          socials: ["google", "farcaster", "github", "apple"],
-          email: true,
-          analytics: true,
-        },
-        debug: true,
-        metadata: {
-          name: "Akasha Hub",
-          description: "Login to Akasha Hub",
-          url: env.NEXT_PUBLIC_BASE_URL,
-          icons: [],
-        },
-      });
+      akashaSdk.services.common.web3.setModalInstance(modal);
 
       try {
         const authRes = await akashaSdk.api.auth.signIn({
