@@ -72,26 +72,26 @@ export function MobileMenu({
           aria-expanded={open}
           aria-label="Toggle Mobile Menu"
           onClick={handleToggleMobileMenu}
-          className="flex aspect-square h-fit select-none flex-col items-center justify-center rounded-full"
+          className="mr-2 flex aspect-square h-fit select-none flex-col items-center justify-center rounded-full"
         >
           <motion.div
             className="w-5 origin-center border-t-2 border-primary"
-            initial={{ translateY: "-3px" }}
+            initial={{ translateY: "0px" }}
             animate={
               open
-                ? { rotate: "45deg", translateY: "1px" }
-                : { translateY: "-3px", rotate: "0deg" }
+                ? { rotate: "45deg", translateY: "4.5px" }
+                : { translateY: "-4px", rotate: "0deg" }
             }
-            transition={{ bounce: 0, duration: 0.1 }}
+            transition={{ bounce: 0, duration: 0.2 }}
           />
           <motion.div
             className="w-5 origin-center border-t-2 border-primary"
-            transition={{ bounce: 0, duration: 0.1 }}
-            initial={{ translateY: "3px" }}
+            transition={{ bounce: 0, duration: 0.2 }}
+            initial={{ translateY: "0px" }}
             animate={
               open
-                ? { rotate: "-45deg", translateY: "-1px" }
-                : { translateY: "3px", rotate: "0deg", scaleX: 1 }
+                ? { rotate: "-45deg", translateY: "-4.5px" }
+                : { translateY: "4px", rotate: "0deg" }
             }
           />
         </Button>
@@ -134,7 +134,7 @@ function MainMobileMenu({
             )}
             onClick={onLinkClicked}
           >
-            Start for free
+            Sign up
           </Link>
           <Link
             href={"#"}

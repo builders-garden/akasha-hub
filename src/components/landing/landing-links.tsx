@@ -5,54 +5,38 @@ import {
   CircuitBoardIcon,
   CuboidIcon,
   FileBarChartIcon,
-  LayoutIcon,
   PlayIcon,
 } from "lucide-react";
 import {
   FacebookIcon,
   InstagramIcon,
   LinkedInIcon,
-  TikTokIcon,
   XIcon,
 } from "@/components/ui/brand-icons";
 import { Routes } from "@/constants/routes";
 
 export const MENU_LINKS = [
   {
-    title: "Product",
+    title: "Company",
     items: [
       {
-        title: "Feature 1",
+        title: "How it works",
         description: "Short description here",
         icon: <CubeIcon className="size-5 shrink-0" />,
         href: "#",
         external: false,
       },
       {
-        title: "Feature 2",
+        title: "Pricing",
         description: "Short description here",
         icon: <PlayIcon className="size-5 shrink-0" />,
         href: "#",
         external: false,
       },
       {
-        title: "Feature 3",
+        title: "Demo",
         description: "Short description here",
         icon: <CircuitBoardIcon className="size-5 shrink-0" />,
-        href: "#",
-        external: false,
-      },
-      {
-        title: "Feature 4",
-        description: "Short description here",
-        icon: <LayoutIcon className="size-5 shrink-0" />,
-        href: "#",
-        external: false,
-      },
-      {
-        title: "Feature 5",
-        description: "Short description here",
-        icon: <FileBarChartIcon className="size-5 shrink-0" />,
         href: "#",
         external: false,
       },
@@ -62,25 +46,60 @@ export const MENU_LINKS = [
     title: "Resources",
     items: [
       {
-        title: "Contact",
-        description: "Reach out for assistance",
+        title: "Automation",
+        description: "Short description here",
         icon: <PaperPlaneIcon className="size-5 shrink-0" />,
         href: "#",
         external: false,
       },
       {
-        title: "Docs",
+        title: "Analytics",
         description: "Learn how to use our platform",
         icon: <BookOpenIcon className="size-5 shrink-0" />,
+        href: "#",
+        external: false,
+      },
+      {
+        title: "Content Creation",
+        description: "Short description here",
+        icon: <BookOpenIcon className="size-5 shrink-0" />,
+        href: "#",
+        external: false,
+      },
+      {
+        title: "Collaboration",
+        description: "Short description here",
+        icon: <FileBarChartIcon className="size-5 shrink-0" />,
         href: "#",
         external: false,
       },
     ],
   },
   {
-    title: "Pricing",
-    href: "#",
-    external: false,
+    title: "About",
+    items: [
+      {
+        title: "Terms of Use",
+        description: "Short description here",
+        icon: <PaperPlaneIcon className="size-5 shrink-0" />,
+        href: Routes.TermsOfUse,
+        external: false,
+      },
+      {
+        title: "Privacy Policy",
+        description: "Learn how to use our platform",
+        icon: <BookOpenIcon className="size-5 shrink-0" />,
+        href: Routes.PrivacyPolicy,
+        external: false,
+      },
+      {
+        title: "Cookie Policy",
+        description: "Short description here",
+        icon: <BookOpenIcon className="size-5 shrink-0" />,
+        href: Routes.CookiePolicy,
+        external: false,
+      },
+    ],
   },
   {
     title: "Blog",
@@ -96,32 +115,24 @@ export const MENU_LINKS = [
 
 export const FOOTER_LINKS = [
   {
-    title: "Product",
+    title: "Company",
     links: [
-      { name: "Feature 1", href: "#", external: false },
-      { name: "Feature 2", href: "#", external: false },
-      { name: "Feature 3", href: "#", external: false },
-      { name: "Feature 4", href: "#", external: false },
-      { name: "Feature 5", href: "#", external: false },
+      { name: "How it works", href: "#", external: false },
+      { name: "Pricing", href: "#", external: false },
+      { name: "Demo", href: "#", external: false },
     ],
   },
   {
     title: "Resources",
     links: [
-      { name: "Contact", href: "#", external: false },
-      { name: "Docs", href: "#", external: false },
+      { name: "Automation", href: "#", external: false },
+      { name: "Analytics", href: "#", external: false },
+      { name: "Content Creation", href: "#", external: false },
+      { name: "Collaboration", href: "#", external: false },
     ],
   },
   {
     title: "About",
-    links: [
-      { name: "Story", href: "#", external: false },
-      { name: "Blog", href: "#", external: false },
-      { name: "Careers", href: "#", external: false },
-    ],
-  },
-  {
-    title: "Legal",
     links: [
       { name: "Terms of Use", href: Routes.TermsOfUse, external: false },
       { name: "Privacy Policy", href: Routes.PrivacyPolicy, external: false },
@@ -150,11 +161,6 @@ export const SOCIAL_LINKS = [
     name: "Instagram",
     href: "#",
     icon: <InstagramIcon className="size-4 shrink-0" />,
-  },
-  {
-    name: "TikTok",
-    href: "#",
-    icon: <TikTokIcon className="size-4 shrink-0" />,
   },
 ];
 
