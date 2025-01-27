@@ -7,18 +7,15 @@ import { sepolia } from "@reown/appkit/networks";
 import React, { type ReactNode } from "react";
 import { cookieToInitialState, WagmiProvider, type Config } from "wagmi";
 import { env } from "@/lib/env";
+// import { CloudAuthSIWX } from "@reown/appkit-siwx";
 
 // Set up queryClient
 const queryClient = new QueryClient();
 
-if (!projectId) {
-  throw new Error("Project ID is not defined");
-}
-
 // Create the modal
 export const modal = createAppKit({
   adapters: [wagmiAdapter],
-  projectId: env.NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID,
+  projectId,
   networks: [sepolia],
   defaultNetwork: sepolia,
   metadata: {
@@ -36,6 +33,7 @@ export const modal = createAppKit({
   enableWallets: false,
   enableWalletConnect: true,
   debug: true,
+  // siwx: new CloudAuthSIWX(),
 });
 
 export function Providers({

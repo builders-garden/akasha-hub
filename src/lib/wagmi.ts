@@ -1,14 +1,11 @@
 import { WagmiAdapter } from "@reown/appkit-adapter-wagmi";
-import { base, baseSepolia } from "@reown/appkit/networks";
+import { sepolia } from "@reown/appkit/networks";
+import { env } from "./env";
 
 // Get projectId from https://cloud.reown.com
-export const projectId = process.env.PUBLIC_WALLET_CONNECT_PROJECT_ID;
+export const projectId = env.NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID;
 
-if (!projectId) {
-  throw new Error("Project ID is not defined");
-}
-
-export const networks = [base, baseSepolia];
+export const networks = [sepolia];
 
 //Set up the Wagmi Adapter (Config)
 export const wagmiAdapter = new WagmiAdapter({
