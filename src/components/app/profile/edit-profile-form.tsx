@@ -8,15 +8,15 @@ import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import Image from "next/image";
 
-interface EditProfilePageProps {
+interface EditProfileFormProps {
   profile: {
     avatar: string;
     name: string;
@@ -31,6 +31,7 @@ interface EditProfilePageProps {
 }
 
 const formSchema = z.object({
+  avatar: z.string(),
   name: z.string(),
   lastname: z.string(),
   email: z.string().email(),
@@ -44,11 +45,12 @@ const formSchema = z.object({
     }),
 });
 
-export function EditProfilePage({ profile }: EditProfilePageProps) {
+export function EditProfileForm({ profile }: EditProfileFormProps) {
   // defined the form with the schema
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
+      avatar: profile.avatar,
       name: profile.name,
       lastname: profile.lastname,
       email: profile.email,
@@ -62,19 +64,59 @@ export function EditProfilePage({ profile }: EditProfilePageProps) {
   }
 
   return (
-    <div className="flex flex-col py-8 px-4 gap-2">
+    <div className="flex flex-col">
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-2">
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-[20px]">
+          <FormField
+            control={form.control}
+            name="avatar"
+            render={({ field }) => (
+              <FormItem className="flex flex-col gap-[8px]">
+                <FormLabel className="font-bold">Avatar</FormLabel>
+                <FormControl>
+                  <div className="flex items-center gap-4">
+                    {field.value ? (
+                      <Image
+                        src={field.value}
+                        alt="Profile avatar"
+                        className="h-[87px] w-[87px] rounded-full object-cover"
+                        width={87}
+                        height={87}
+                      />
+                    ) : (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img
+                        src={`https://ui-avatars.com/api/?name=${profile.name}+${profile.lastname}`}
+                        alt="Profile avatar"
+                        className="h-[87px] w-[87px] rounded-full object-cover"
+                      />
+                    )}
+                    <Button
+                      type="button"
+                      variant="outline"
+                      onClick={() => {
+                        // Add image upload logic here
+                        console.log("Upload image clicked");
+                      }}
+                      className="rounded-full"
+                    >
+                      Change Image
+                    </Button>
+                  </div>
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
           <FormField
             control={form.control}
             name="name"
             render={({ field }) => (
-              <FormItem>
-                <FormLabel>Name</FormLabel>
+              <FormItem className="flex flex-col gap-[8px]">
+                <FormLabel className="font-bold">Name</FormLabel>
                 <FormControl>
                   <Input placeholder="John" {...field} />
                 </FormControl>
-                <FormDescription>Your first name.</FormDescription>
                 <FormMessage />
               </FormItem>
             )}
@@ -83,12 +125,11 @@ export function EditProfilePage({ profile }: EditProfilePageProps) {
             control={form.control}
             name="lastname"
             render={({ field }) => (
-              <FormItem>
-                <FormLabel>Last Name</FormLabel>
+              <FormItem className="flex flex-col gap-[8px]">
+                <FormLabel className="font-bold">Last Name</FormLabel>
                 <FormControl>
                   <Input placeholder="Doe" {...field} />
                 </FormControl>
-                <FormDescription>Your last name.</FormDescription>
                 <FormMessage />
               </FormItem>
             )}
@@ -97,12 +138,11 @@ export function EditProfilePage({ profile }: EditProfilePageProps) {
             control={form.control}
             name="email"
             render={({ field }) => (
-              <FormItem>
-                <FormLabel>Email</FormLabel>
+              <FormItem className="flex flex-col gap-[8px]">
+                <FormLabel className="font-bold">Email</FormLabel>
                 <FormControl>
                   <Input placeholder="john.doe@example.com" {...field} />
                 </FormControl>
-                <FormDescription>Your email address.</FormDescription>
                 <FormMessage />
               </FormItem>
             )}
@@ -111,19 +151,21 @@ export function EditProfilePage({ profile }: EditProfilePageProps) {
             control={form.control}
             name="username"
             render={({ field }) => (
-              <FormItem>
-                <FormLabel>Username</FormLabel>
+              <FormItem className="flex flex-col gap-[8px]">
+                <FormLabel className="font-bold">Username</FormLabel>
                 <FormControl>
                   <Input placeholder="johndoe" {...field} />
                 </FormControl>
-                <FormDescription>
-                  This is your public display name.
-                </FormDescription>
                 <FormMessage />
               </FormItem>
             )}
           />
-          <Button type="submit">Submit</Button>
+          <Button
+            type="submit"
+            className="fixed bottom-[18px] left-1/2 -translate-x-1/2 w-[calc(100%-2rem)] max-w-md text-md rounded-full"
+          >
+            Submit
+          </Button>
         </form>
       </Form>
     </div>

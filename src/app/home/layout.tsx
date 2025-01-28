@@ -1,5 +1,4 @@
 import { Navbar } from "@/components/app/navbar";
-import { Footer } from "@/components/landing/footer";
 
 export default function AppLayout({
   children,
@@ -10,7 +9,6 @@ export default function AppLayout({
     <div>
       <Navbar />
       {children}
-      <Footer />
     </div>
   );
 }

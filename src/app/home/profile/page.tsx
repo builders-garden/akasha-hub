@@ -1,8 +1,9 @@
 import { PageTitle } from "@/components/app/page-title";
-import { EditProfilePage } from "@/components/app/profile/edit-profile-page";
+import { EditProfileForm } from "@/components/app/profile/edit-profile-form";
 
 export default function Profile() {
   const profile = {
+    avatar: "",
     name: "John",
     lastname: "Doe",
     email: "john.doe@example.com",
@@ -16,9 +17,9 @@ export default function Profile() {
   };
 
   return (
-    <div className="flex flex-col py-8 px-4 gap-2">
+    <div className="flex flex-col py-[40px] px-[24px] gap-[32px]">
       <PageTitle title="Profile" />
-      <EditProfilePage profile={profile} />
+      <EditProfileForm profile={profile} />
     </div>
   );
 }

@@ -10,11 +10,8 @@ export function PageTitle({ title }: PageTitleProps): React.ReactElement {
   const router = useRouter();
 
   return (
-    <div className="flex flex-row items-center my-2 gap-2">
-      <button
-        onClick={() => router.back()}
-        className="bg-transparent p-2 rounded-full"
-      >
+    <div className="flex flex-row items-center gap-[16px]">
+      <button onClick={() => router.back()} className="bg-transparent">
         <FaArrowLeft size={24} />
       </button>
       <h1 className="text-[28px] font-bold">{title}</h1>
