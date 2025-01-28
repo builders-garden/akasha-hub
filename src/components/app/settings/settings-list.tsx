@@ -6,11 +6,14 @@ import { ReactElement } from "react";
 
 interface SettingsListProps {
   settings: SettingsItemProps[];
+  divide?: boolean;
 }
 
-export function SettingsList({ settings }: SettingsListProps) {
+export function SettingsList({ settings, divide = true }: SettingsListProps) {
   return (
-    <div className="flex flex-col divide-y-2 divide-gray-200">
+    <div
+      className={`flex flex-col ${divide ? "divide-y-2 divide-gray-200" : ""}`}
+    >
       {settings.map((setting, index) => (
         <SettingsItem
           key={index}

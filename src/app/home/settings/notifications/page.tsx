@@ -37,7 +37,7 @@ export default function NotificationsSettings() {
   return (
     <div className="flex flex-col py-[40px] px-[24px] gap-[32px]">
       <PageTitle title="Notifications settings" />
-      <SettingsList settings={settings} />
+      <SettingsList settings={settings} divide={false} />
     </div>
   );
 }
