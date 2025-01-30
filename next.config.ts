@@ -1,4 +1,10 @@
 import type { NextConfig } from "next";
+import withBundleAnalyzer from "@next/bundle-analyzer";
+import { createSecureHeaders } from "next-secure-headers";
+
+const bundleAnalyzerConfig = withBundleAnalyzer({
+  enabled: process.env.BUNDLE_ANALYZER === "true",
+});
 
 const nextConfig: NextConfig = {
   env: {
@@ -22,6 +28,39 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  reactStrictMode: true,
+  poweredByHeader: false,
+  devIndicators: {
+    appIsrStatus: false,
+  },
+  async headers() {
+    return [
+      {
+        locale: false,
+        source: "/(.*)",
+        headers: createSecureHeaders({
+          frameGuard: "deny",
+          noopen: "noopen",
+          nosniff: "nosniff",
+          xssProtection: "sanitize",
+          forceHTTPSRedirect: [
+            true,
+            { maxAge: 60 * 60 * 24 * 360, includeSubDomains: true },
+          ],
+          referrerPolicy: "same-origin",
+        }),
+      },
+    ];
+  },
+  async redirects() {
+    return [
+      {
+        source: "/dashboard",
+        destination: "/dashboard/home",
+        permanent: false,
+      },
+    ];
+  },
 };
 
-export default nextConfig;
+export default bundleAnalyzerConfig(nextConfig);

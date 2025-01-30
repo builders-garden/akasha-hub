@@ -1,10 +1,15 @@
 export enum Routes {
   Root = "/",
-  Home = "/home",
-  Profile = "/home/profile",
   TermsOfUse = "/terms-of-use",
   PrivacyPolicy = "/privacy-policy",
   CookiePolicy = "/cookie-policy",
 
   Onboarding = "/onboarding",
+
+  Dashboard = "/dashboard",
+  Home = "/dashboard/home",
+  Profile = "/dashboard/profile",
+  Notifications = "/dashboard/notifications",
+  Hubs = "/dashboard/hubs",
+  MyHubs = "/dashboard/my-hubs",
 }

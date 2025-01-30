@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { Routes } from "@/constants/routes";
 
 function HubsTitle(): React.JSX.Element {
   return (
@@ -79,8 +80,16 @@ function HubDetails(): React.JSX.Element {
       transition={{ delay: 0.2, duration: 0.4 }}
       className="flex flex-col sm:flex-row gap-4 px-2 sm:px-1"
     >
-      <HubCard title="Barcelona" subtitle="Akasha Hub" link="/hubs/barcelona" />
-      <HubCard title="Roma" subtitle="Akasha x Urbe Hub" link="/hubs/roma" />
+      <HubCard
+        title="Barcelona"
+        subtitle="Akasha Hub"
+        link={`${Routes.Hubs}/barcelona`}
+      />
+      <HubCard
+        title="Roma"
+        subtitle="Akasha x Urbe Hub"
+        link={`${Routes.Hubs}/rome`}
+      />
     </motion.div>
   );
 }
