@@ -18,7 +18,7 @@ import Image from "next/image";
 
 interface EditProfileFormProps {
   profile: {
-    avatar: string;
+    avatar?: string;
     name: string;
     lastname: string;
     email: string;
@@ -31,7 +31,7 @@ interface EditProfileFormProps {
 }
 
 const formSchema = z.object({
-  avatar: z.string(),
+  avatar: z.string().optional(),
   name: z.string(),
   lastname: z.string(),
   email: z.string().email(),
@@ -95,7 +95,7 @@ export function EditProfileForm({ profile }: EditProfileFormProps) {
                       type="button"
                       variant="outline"
                       onClick={() => {
-                        // Add image upload logic here
+                        // TODO: Add image upload logic here
                         console.log("Upload image clicked");
                       }}
                       className="rounded-full"
