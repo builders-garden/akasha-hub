@@ -79,7 +79,7 @@ export function EditProfileForm({ profile }: EditProfileFormProps) {
                       <Image
                         src={field.value}
                         alt="Profile avatar"
-                        className="h-[87px] w-[87px] rounded-full object-cover"
+                        className="h-[87px] w-[87px] lg:h-[140px] lg:w-[140px] rounded-full object-cover"
                         width={87}
                         height={87}
                       />
@@ -88,7 +88,7 @@ export function EditProfileForm({ profile }: EditProfileFormProps) {
                       <img
                         src={`https://ui-avatars.com/api/?name=${profile.name}+${profile.lastname}`}
                         alt="Profile avatar"
-                        className="h-[87px] w-[87px] rounded-full object-cover"
+                        className="h-[87px] w-[87px] lg:h-[140px] lg:w-[140px] rounded-full object-cover"
                       />
                     )}
                     <Button
@@ -162,9 +162,15 @@ export function EditProfileForm({ profile }: EditProfileFormProps) {
           />
           <Button
             type="submit"
-            className="fixed bottom-[18px] left-1/2 -translate-x-1/2 w-[calc(100%-2rem)] max-w-md text-md rounded-full"
+            className="fixed md:hidden bottom-[18px] left-1/2 -translate-x-1/2 w-[96%] text-md rounded-full"
           >
-            Submit
+            Save
+          </Button>
+          <Button
+            type="submit"
+            className="hidden md:block w-[170px] text-md rounded-full mr-0 ml-auto items-center"
+          >
+            Save
           </Button>
         </form>
       </Form>

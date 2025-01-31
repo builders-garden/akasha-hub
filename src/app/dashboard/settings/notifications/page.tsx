@@ -1,6 +1,6 @@
 "use client";
 
-import { PageTitle } from "@/components/app/page-title";
+import { PageTitle } from "@/components/app/page-title-old";
 import {
   SettingsItemProps,
   SettingsList,

@@ -1,13 +1,9 @@
 "use client";
 
-import { PageTitle } from "@/components/app/page-title";
-import {
-  SettingsItemProps,
-  SettingsList,
-} from "@/components/app/settings/settings-list";
 import { useState } from "react";
+import { SettingsItemProps, SettingsList } from "./settings-list";
 
-export default function Settings() {
+export function SettingsPage() {
   const [themeEnabled, setThemeEnabled] = useState(false);
 
   function handleThemeChange() {
@@ -19,7 +15,7 @@ export default function Settings() {
     {
       title: "Notifications",
       icon: <div className="w-[24px] h-[24px] bg-gray-400 rounded-full"></div>,
-      itemUrl: "/home/settings/notifications",
+      itemUrl: "/dashboard/settings/notifications",
     },
     {
       title: "Theme",
@@ -30,8 +26,7 @@ export default function Settings() {
   ];
 
   return (
-    <div className="flex flex-col py-[40px] px-[24px] gap-[32px]">
-      <PageTitle title="Settings" />
+    <div className="flex flex-col py-8 px-4 gap-2">
       <SettingsList settings={settings} />
     </div>
   );

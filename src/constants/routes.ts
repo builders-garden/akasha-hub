@@ -12,4 +12,6 @@ export enum Routes {
   Notifications = "/dashboard/notifications",
   Hubs = "/dashboard/hubs",
   MyHubs = "/dashboard/my-hubs",
+
+  Settings = "/dashboard/settings",
 }

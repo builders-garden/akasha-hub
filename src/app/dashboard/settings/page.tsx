@@ -1,7 +1,3 @@
-import * as React from "react";
-import { type Metadata } from "next";
-
-import { EditProfilePage } from "@/components/home/profile/edit-profile-page";
 import {
   Page,
   PageHeader,
@@ -11,39 +7,29 @@ import {
 } from "@/components/ui/page";
 
 import { TransitionProvider } from "@/hooks/use-transition-context";
+import React from "react";
+import { type Metadata } from "next";
 import { createTitle } from "@/lib/utils";
+import { SettingsPage } from "@/components/app/settings/settings-page";
 
 export const metadata: Metadata = {
-  title: createTitle("Profile"),
+  title: createTitle("Settings"),
 };
 
-export default function Profile() {
-  const profile = {
-    name: "John",
-    lastname: "Doe",
-    email: "john.doe@example.com",
-    username: "johndoe",
-    identities: [
-      {
-        provider: "evm",
-        address: "0x1234567890abcdef",
-      },
-    ],
-  };
-
+export default function Settings() {
   return (
     <TransitionProvider>
       <Page>
         <PageHeader>
           <PagePrimaryBar>
             <div className="flex flex-row items-center gap-1">
-              <PageTitle>Your profile</PageTitle>
+              <PageTitle>Settings</PageTitle>
             </div>
           </PagePrimaryBar>
         </PageHeader>
         <PageBody className="md:w-[628px]">
           <React.Suspense>
-            <EditProfilePage profile={profile} />
+            <SettingsPage />
           </React.Suspense>
         </PageBody>
       </Page>

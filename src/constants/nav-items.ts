@@ -1,4 +1,4 @@
-import { BellIcon, HomeIcon, UserIcon } from "lucide-react";
+import { BellIcon, HomeIcon, Settings, UserIcon } from "lucide-react";
 
 import { Routes } from "@/constants/routes";
 import type { LucideIcon } from "lucide-react";
@@ -26,6 +26,11 @@ export const mainNavItems: NavItem[] = [
     title: "My Hubs",
     href: Routes.MyHubs,
     icon: UserIcon,
+  },
+  {
+    title: "Settings",
+    href: Routes.Settings,
+    icon: Settings,
   },
 ];
 
