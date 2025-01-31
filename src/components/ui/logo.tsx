@@ -22,7 +22,7 @@ export function Logo({
     <div className={cn("flex items-center space-x-2", className)} {...other}>
       {!hideSymbol && (
         <div className="flex size-9 items-center justify-center p-1">
-          <div className="flex size-7 items-center justify-center text-primary">
+          <div className="flex size-7 items-center justify-center text-primary dark:invert">
             <svg
               width="31"
               height="31"

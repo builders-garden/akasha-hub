@@ -2,9 +2,12 @@
 
 import * as React from "react";
 import * as TabsPrimitive from "@radix-ui/react-tabs";
+import { useQueryState } from "nuqs";
 
 import { cn } from "@/lib/utils";
 
+export type TabsElement = React.ElementRef<typeof TabsPrimitive.Root>;
+export type TabsProps = React.ComponentProps<typeof TabsPrimitive.Root>;
 const Tabs = TabsPrimitive.Root;
 
 const TabsList = React.forwardRef<
@@ -113,13 +116,65 @@ const UnderlinedTabsContent = React.forwardRef<
 >((props, ref) => <TabsPrimitive.Content ref={ref} {...props} />);
 UnderlinedTabsContent.displayName = "UnderlinedTabsContent";
 
+// Add new types for query state tabs
+export type TabsWithQueryStateProps = Omit<
+  TabsProps,
+  "value" | "onValueChange"
+> & {
+  queryKey: string;
+  defaultValue: string;
+};
+
+const TabsWithQueryState = React.forwardRef<
+  TabsElement,
+  TabsWithQueryStateProps
+>(({ queryKey, defaultValue, ...props }, ref) => {
+  const [value, setValue] = useQueryState(queryKey, {
+    defaultValue,
+    parse: (value: string | null) => value ?? defaultValue,
+  });
+
+  return (
+    <TabsPrimitive.Root
+      ref={ref}
+      value={value}
+      onValueChange={setValue}
+      {...props}
+    />
+  );
+});
+TabsWithQueryState.displayName = "TabsWithQueryState";
+
+// Create an underlined version with query state
+const UnderlinedTabsWithQueryState = React.forwardRef<
+  UnderlinedTabsElement,
+  TabsWithQueryStateProps
+>(({ queryKey, defaultValue, ...props }, ref) => {
+  const [value, setValue] = useQueryState(queryKey, {
+    defaultValue,
+    parse: (value: string | null) => value ?? defaultValue,
+  });
+
+  return (
+    <TabsPrimitive.Root
+      ref={ref}
+      value={value}
+      onValueChange={setValue}
+      {...props}
+    />
+  );
+});
+UnderlinedTabsWithQueryState.displayName = "UnderlinedTabsWithQueryState";
+
 export {
   Tabs,
   TabsList,
   TabsTrigger,
   TabsContent,
+  TabsWithQueryState,
   UnderlinedTabs,
   UnderlinedTabsContent,
   UnderlinedTabsList,
   UnderlinedTabsTrigger,
+  UnderlinedTabsWithQueryState,
 };
